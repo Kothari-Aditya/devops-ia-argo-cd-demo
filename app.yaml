@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aditya-kothari-demo-application
+  namespace: argocd-demo-devops-ia
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Kothari-Aditya/devops-ia-argo-cd-demo.git
+    targetRevision: HEAD
+    path: .
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
